@@ -51,7 +51,7 @@ document
     if (hubungan) {
       // Jika "Ya", lanjut ke halaman website
       alert("Selamat! Anda dapat melanjutkan untuk membuka hadiahnya.");
-      window.location.href = "index.html"; // Arahkan ke halaman berikutnya
+      window.location.href = "halaman1.html"; // Arahkan ke halaman berikutnya
     } else {
       // Jika "Tidak", keluar dari halaman
       alert("Maaf, Anda tidak dapat melanjutkan.");
