@@ -1,0 +1,230 @@
+/* ==============================
+   1. GLOBAL STYLES
+   ============================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: aliceblue;
+  background-color: black;
+  font-style: italic;
+  text-indent: 20px;
+  font-size: 30px;
+  text-shadow: 0px 5px 5px rgb(238, 209, 156);
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: visible; /* Ubah menjadi visible agar konten tidak disembunyikan */
+}
+
+/* Overlay untuk membuat background lebih gelap */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: -1;
+}
+
+/* Partikel bergerak */
+body::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.1) 1px,
+    transparent 1px
+  );
+  background-size: 40px 40px;
+  animation: particles 10s infinite linear;
+  z-index: -1;
+}
+
+@keyframes particles {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  100% {
+    transform: translateX(-50%) translateY(50%);
+  }
+}
+
+/* ==============================
+       2. CONTENT STYLES
+       ============================== */
+.content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 80%;
+  max-width: 1200px;
+  position: relative; /* Menambahkan posisi relatif */
+  z-index: 1; /* Memastikan konten berada di atas overlay */
+}
+
+.text {
+  width: 60%;
+  z-index: 1; /* Memastikan teks tidak tertutupi oleh animasi */
+}
+
+.halaman1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.p {
+  font-family: "Montserrat", sans-serif;
+  font-size: 15px;
+  text-indent: 0;
+  margin-bottom: 15px;
+}
+
+/* ==============================
+     3. IMAGE BOX STYLES
+     ============================== */
+.image-box {
+  position: relative;
+  width: 30%;
+  margin-top: -30px;
+  z-index: 1; /* Memastikan gambar tidak tertutupi oleh animasi */
+}
+
+.image {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: absolute;
+  transform-origin: center;
+}
+
+.image:nth-child(1) {
+  top: 0;
+  left: 0;
+  transform: rotate(-10deg) scale(1);
+}
+
+.image:nth-child(2) {
+  top: 100px;
+  left: 50px;
+  transform: rotate(15deg) scale(1);
+}
+
+.image:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.3);
+}
+
+/* ==============================
+       2. LOVE BUTTON STYLES
+       ============================== */
+.love-button {
+  display: inline-block;
+  font-size: 4rem;
+  color: #ff4757;
+  text-decoration: none;
+  transition: transform 0.3s ease, color 0.3s ease;
+  margin-top: 20px;
+}
+
+.love-button:hover {
+  transform: scale(1.2);
+  color: #ff7f50;
+  cursor: pointer;
+}
+
+/* ==============================
+       3. LOVE ANIMATION STYLES
+       ============================== */
+[data-love] {
+  position: absolute;
+  font-size: 2rem;
+  color: #ff4757;
+  pointer-events: none;
+  animation: float-up 5s linear infinite;
+}
+
+@keyframes float-up {
+  0% {
+    transform: translateY(100vh) scale(0.5);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-10vh) scale(1);
+    opacity: 0;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  body {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .content {
+    margin-top: -200px;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+  }
+
+  .text {
+    width: 100%;
+    margin-bottom: 20px;
+    text-align: left;
+  }
+
+  .text p {
+    margin-left: 20px;
+  }
+
+  .image-box {
+    width: 70%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .image {
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+  }
+
+  .love-button {
+    font-size: 3rem;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .halaman1 {
+    font-size: 2rem;
+  }
+
+  .p {
+    font-size: 13px;
+  }
+
+  .image {
+    width: 180px;
+    height: 180px;
+  }
+
+  .love-button {
+    font-size: 2.5rem;
+  }
+}
